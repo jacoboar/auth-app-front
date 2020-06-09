@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Media from 'react-media';
+
+import { App } from './App';
+import { MobileAlert } from './common/components/MobileAlert';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Media queries={{ small: { maxWidth: 719 } }}>
+      {(matches) =>
+        matches.small ? <MobileAlert /> : <App />
+      }
+    </Media>
   </React.StrictMode>,
   document.getElementById('root')
 );
